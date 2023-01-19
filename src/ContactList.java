@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A class that stores subclasses of Person as a contact list.
  * The user is presented with a menu of options and may add, sort,
@@ -12,9 +14,12 @@
 public class ContactList
 {
     // TODO: Create your array contacts
-
+    ArrayList <Person> contacts;
     // TODO: Write a Constructor
-
+    public ContactList()
+    {
+        contacts = new ArrayList<Person>();
+    }
     public void printMenuOptions() {
         System.out.println("Menu: ");
         System.out.println("1. Add Contact");
@@ -32,8 +37,9 @@ public class ContactList
      * Asks user for input to create and add a new Person
      * to the contact list
      */
-    public void addContact() {
+    public void addContact(Person e) {
         // TODO: Complete the addContact method
+        contacts.add(e);
     }
 
     /**
@@ -41,6 +47,10 @@ public class ContactList
      */
     public void printContacts() {
         // TODO: Complete the printContacts method
+        for (int i = 0; i < contacts.size(); i++)
+        {
+            System.out.println(contacts.get(i));
+        }
     }
 
     /**
@@ -50,19 +60,107 @@ public class ContactList
      */
     public void sort(int sortBy) {
         // TODO: Complete the sort method
+        // TODO: Write searchByFirstName
+        if (sortBy == 0)
+        {
+            for(int i = 0; i < contacts.size(); i++)
+            {
+                for(int j = 0; j < contacts.size() - i - 1; j++)
+                {
+                     if (contacts.get(j).getFirstName().compareTo(contacts.get(j+1).getFirstName()) > 0)
+                     {
+                        Person temp = contacts.get(j);
+                        contacts.set(j, contacts.get(j + 1));
+                        contacts.set(j + 1, temp);
+
+                     }
+                }
+            }
+            System.out.println(contacts);
+        }
+
+        if (sortBy == 1)
+        {
+            for(int i = 0; i < contacts.size(); i++)
+            {
+                for(int j = 0; j < contacts.size() - i - 1; j++)
+                {
+                    if (contacts.get(j).getLastName().compareTo(contacts.get(j+1).getLastName()) > 0)
+                    {
+                        Person temp = contacts.get(j);
+                        contacts.set(j, contacts.get(j + 1));
+                        contacts.set(j + 1, temp);
+
+
+                    }
+                }
+            }
+            System.out.println(contacts);
+        }
+
+        if (sortBy == 2)
+        {
+            for(int i = 0; i < contacts.size(); i++)
+            {
+                for(int j = 0; j < contacts.size() - i - 1; j++)
+                {
+                    if (contacts.get(j).getPhoneNumber().compareTo(contacts.get(j+1).getPhoneNumber()) > 0)
+                    {
+                        Person temp = contacts.get(j);
+                        contacts.set(j, contacts.get(j + 1));
+                        contacts.set(j + 1, temp);
+                    }
+                }
+            }
+            System.out.println(contacts);
+        }
+
+
     }
-
-    // TODO: Write searchByFirstName
-
-    // TODO: Write searchByLastName
-
-    // TODO: Write searchByPhoneNumber
 
     /**
      * Lists just the Student objects in the Contact List
      */
+
+    public Person searchByFirstName(String firstName)
+    {
+        for(int i = 0; i < contacts.size(); i++)
+        {
+            if (contacts.get(i).getFirstName().equals(firstName))
+            {
+                return contacts.get(i);
+            }
+        }
+    }
+    public Person searchByLastName(String lastName)
+    {
+        for(int i = 0; i < contacts.size(); i++)
+        {
+            if (contacts.get(i).getLastName().equals(lastName))
+            {
+                return contacts.get(i);
+            }
+        }
+    }
+    public Person searchByPhoneNumber(String phoneNumber)
+    {
+        for(int i = 0; i < contacts.size(); i++)
+        {
+            if (contacts.get(i).getPhoneNumber().equals(phoneNumber))
+            {
+                return contacts.get(i);
+            }
+        }
+    }
     public void listStudents() {
         // TODO: Complete the listStudents method
+        for (int i = 0; i < contacts.size(); i++)
+        {
+            if (contacts.get(i)instanceof Student)
+            {
+                System.out.println(contacts.get(i));
+            }
+        }
     }
 
     /**
