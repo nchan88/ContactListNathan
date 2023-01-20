@@ -82,7 +82,7 @@ public class ContactList
                      }
                 }
             }
-            System.out.println(contacts);
+            printContacts();
         }
         //same thing but with last name being compared
         if (sortBy == 1)
@@ -101,7 +101,7 @@ public class ContactList
                     }
                 }
             }
-            System.out.println(contacts);
+            printContacts();
         }
         //same thing but with phone number being compared
         if (sortBy == 2)
@@ -118,7 +118,7 @@ public class ContactList
                     }
                 }
             }
-            System.out.println(contacts);
+            printContacts();
         }
 
 
